@@ -8,6 +8,6 @@ usage:
     use-my-orb:
       jobs:
         - s3-custom-meta/update:
-          bucket_name: example.bucket.com 
+          bucket_name: example.bucket.com
           object_path: path/to/object
           meta_datas: "{\"foo\": 1, \"bar\": 2}"
