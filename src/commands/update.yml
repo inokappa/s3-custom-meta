@@ -26,9 +26,9 @@ parameters:
     default: AWS_REGION
 steps:
   - aws-cli/setup:
-      aws-access-key-id: \<\< parameters.aws-access-key-id \>\>
-      aws-secret-access-key: \<\< parameters.aws-secret-access-key \>\>
-      aws-region: \<\< parameters.aws-region \>\>
+      aws-access-key-id: << parameters.aws-access-key-id >>
+      aws-secret-access-key: << parameters.aws-secret-access-key >>
+      aws-region: << parameters.aws-region >>
   - run:
       environment:
         PARAM_BUCKET: \<\< parameters.bucket_name \>\>
