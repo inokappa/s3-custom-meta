@@ -3,20 +3,36 @@ description: >
 parameters:
   bucket_name:
     type: string
-    description: "Specify the bucket name."
+    description: Specify the bucket name.
   object_path:
     type: string
-    description: "Specify the object path."
+    description: Specify the object path.
   meta_datas:
     type: string
     description: >
       Specify the meta datas.
       ex) {"foo": "1", "bar": 2} or foo=1,bar=2
+  aws-access-key-id:
+    type: env_var_name
+    description: aws access key id override.
+    default: AWS_ACCESS_KEY_ID
+  aws-secret-access-key:
+    type: env_var_name
+    description: aws secret access key override.
+    default: AWS_SECRET_ACCESS_KEY
+  aws-region:
+    type: env_var_name
+    description: aws region override.
+    default: AWS_REGION
 steps:
+  - aws-cli/setup:
+      aws-access-key-id: \<\< parameters.aws-access-key-id \>\>
+      aws-secret-access-key: \<\< parameters.aws-secret-access-key \>\>
+      aws-region: \<\< parameters.aws-region \>\>
   - run:
       environment:
-        PARAM_BUCKET: \<\<parameters.bucket_name\>\>
-        PARAM_OBJECT_PATH: \<\<parameters.object_path\>\>
-        PARAM_META_DATAS: \<\<parameters.meta_datas\>\>
+        PARAM_BUCKET: \<\< parameters.bucket_name \>\>
+        PARAM_OBJECT_PATH: \<\< parameters.object_path \>\>
+        PARAM_META_DATAS: \<\< parameters.meta_datas \>\>
       name: Update meta datas
-      command: \<\<include(scripts/update.sh)\>\>
+      command: \<\< include(scripts/update.sh) \>\>
