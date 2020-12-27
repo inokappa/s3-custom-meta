@@ -1,0 +1,13 @@
+description: >
+  Update S3 object custome metadatas example.
+usage:
+  version: 2.1
+  orbs:
+    s3-custom-meta: inokappa/s3-custom-meta@0.0.1
+  workflows:
+    use-my-orb:
+      jobs:
+        - s3-custom-meta/update:
+            bucket_name: example.bucket.com 
+            object_path: path/to/object
+            meta_datas: {"foo": 1, "bar": 2}

@@ -1,0 +1,22 @@
+description: >
+  Update S3 object custome metadatas.
+parameters:
+  bucket_name:
+    type: string
+    description: "Specify the bucket name."
+  object_path:
+    type: string
+    description: "Specify the object path."
+  meta_datas:
+    type: string
+    description: >
+      Specify the meta datas.
+      ex) {"foo": "1", "bar": 2} or foo=1,bar=2
+steps:
+  - run:
+      environment:
+        PARAM_BUCKET: <<parameters.bucket_name>>
+        PARAM_OBJECT_PATH: <<parameters.object_path>>
+        PARAM_META_DATAS: <<parameters.meta_datas>>
+      name: Update meta datas
+      command: <<include(scripts/update.sh)>>
