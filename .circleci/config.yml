@@ -32,7 +32,7 @@ jobs:
       # "greet" is a sample command packaged with this orb config.
       # This sample integration test will run as long as the greet command exists. Once you remove the greet command you should remove this line.
       # Push new changes first, before adding new tests to your config.
-      - s3-custom-meta/update
+      - s3-custom-meta/update:
           bucket_name: example.bucket.com 
           object_path: path/to/object
           meta_datas: {"foo": 1, "bar": 2}
