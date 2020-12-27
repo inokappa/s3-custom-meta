@@ -33,7 +33,7 @@ jobs:
       # This sample integration test will run as long as the greet command exists. Once you remove the greet command you should remove this line.
       # Push new changes first, before adding new tests to your config.
       - s3-custom-meta/update:
-          bucket_name: example.bucket.com 
+          bucket_name: example.bucket.com
           object_path: path/to/object
           meta_datas: "{\"foo\": 1, \"bar\": 2}"
 
@@ -99,6 +99,6 @@ workflows:
             - integration-test-1
           filters:
             branches:
-              only: 
+              only:
                 - master
                 - main
