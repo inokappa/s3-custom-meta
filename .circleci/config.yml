@@ -27,11 +27,31 @@ jobs:
   integration-test-1:
     docker:
       - image: cimg/base:stable
+        environment:
+          AWS_ACCESS_KEY_ID: EXAMPLEKEY123
+          AWS_SECRET_ACCESS_KEY: EXAMPLESECRET123456
+          AWS_DEFAULT_REGION: us-east-1
+          AWS_ENDPOINT: s3-minio:9000
+          AWS_DISABLE_SSL: true
+      - image: minio/minio:latest
+        name: s3-minio
+        environment:
+          MINIO_ACCESS_KEY: EXAMPLEKEY123
+          MINIO_SECRET_KEY: EXAMPLESECRET123456
+        command: ["server", "/data"]
     steps:
       - checkout
       # "greet" is a sample command packaged with this orb config.
       # This sample integration test will run as long as the greet command exists. Once you remove the greet command you should remove this line.
       # Push new changes first, before adding new tests to your config.
+      - run:
+          name: Install minio client, prepare minio
+          command: |
+            curl -sSL https://dl.minio.io/client/mc/release/linux-amd64/mc -o ${GOPATH}/bin/mc
+            chmod +x ${GOPATH}/bin/mc
+            mc config host add s3-minio http://${AWS_ENDPOINT} ${AWS_ACCESS_KEY_ID} ${AWS_SECRET_ACCESS_KEY}
+            mc mb s3-minio/example.bucket.com
+            touch object && mc cp object s3-minio/example.bucket.com/path/to/object
       - s3-custom-meta/update:
           bucket_name: example.bucket.com
           object_path: path/to/object
