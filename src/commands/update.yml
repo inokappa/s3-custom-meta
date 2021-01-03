@@ -1,7 +1,7 @@
 description: >
   Update S3 object custome metadatas.
 parameters:
-  endpoint_url:
+  s3_endpoint_url:
     type: string
     description: Specify the AWS API Endpoint URL.
   bucket_name:
@@ -37,7 +37,7 @@ steps:
         PARAM_BUCKET: << parameters.bucket_name >>
         PARAM_OBJECT_PATH: << parameters.object_path >>
         PARAM_META_DATAS: << parameters.meta_datas >>
-        PARAM_ENDPOINT: << parameters.endpoint_url >>
+        PARAM_ENDPOINT: << parameters.s3_endpoint_url >>
       name: Update meta datas
       command: << include(scripts/update.sh) >>
         # command: |
