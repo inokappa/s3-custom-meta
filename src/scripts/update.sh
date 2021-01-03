@@ -1,6 +1,5 @@
 Update() {
   echo "${PARAM_ENDPOINT}"
-  OPTIONS=""
   if [ -n "${PARAM_ENDPOINT}" ];then
     aws --endpoint-url "${PARAM_ENDPOINT}" s3api copy-object \
       --bucket "${PARAM_BUCKET}" \
