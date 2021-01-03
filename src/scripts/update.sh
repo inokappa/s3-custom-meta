@@ -1,8 +1,11 @@
 Update() {
+  echo "${PARAM_ENDPOINT}"
   OPTIONS=""
   if [ -n "${PARAM_ENDPOINT}" ];then
     OPTIONS="--endpoint-url ${PARAM_ENDPOINT}"
   fi
+
+  echo "${OPTIONS}"
   aws "${OPTIONS}" s3api copy-object \
     --bucket "${PARAM_BUCKET}" \
     --copy-source "${PARAM_BUCKET}/${PARAM_OBJECT_PATH}" \
