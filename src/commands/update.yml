@@ -42,5 +42,4 @@ steps:
             --copy-source "${PARAM_BUCKET}/${PARAM_OBJECT_PATH}" \
             --key "${PARAM_OBJECT_PATH}" \
             --metadata-directive REPLACE \
-            --metadata "${PARAM_META_DATAS}" 
-
+            --metadata "${PARAM_META_DATAS}"
