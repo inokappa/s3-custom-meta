@@ -35,11 +35,11 @@ steps:
         PARAM_OBJECT_PATH: << parameters.object_path >>
         PARAM_META_DATAS: << parameters.meta_datas >>
       name: Update meta datas
-        # command: \<\< include(scripts/update.sh) \>\>
-      command: |
-          aws s3api copy-object \
-            --bucket "${PARAM_BUCKET}" \
-            --copy-source "${PARAM_BUCKET}/${PARAM_OBJECT_PATH}" \
-            --key "${PARAM_OBJECT_PATH}" \
-            --metadata-directive REPLACE \
-            --metadata "${PARAM_META_DATAS}"
+      command: << include(scripts/update.sh) >>
+        # command: |
+        #     aws s3api copy-object \
+        #       --bucket "${PARAM_BUCKET}" \
+        #       --copy-source "${PARAM_BUCKET}/${PARAM_OBJECT_PATH}" \
+        #       --key "${PARAM_OBJECT_PATH}" \
+        #       --metadata-directive REPLACE \
+        #       --metadata "${PARAM_META_DATAS}"
