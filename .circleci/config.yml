@@ -47,7 +47,7 @@ jobs:
       - run:
           name: Install minio client, prepare minio
           command: |
-            mkdir bin
+            mkdir ${HOME}/bin
             curl -sSL https://dl.minio.io/client/mc/release/linux-amd64/mc -o ${HOME}/bin/mc
             chmod +x ${HOME}/bin/mc
             ${HOME}/bin/mc config host add s3-minio http://${AWS_ENDPOINT} ${AWS_ACCESS_KEY_ID} ${AWS_SECRET_ACCESS_KEY}
