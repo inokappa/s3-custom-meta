@@ -11,4 +11,4 @@ usage:
             endpoint_url: http://example.com
             bucket_name: example.bucket.com
             object_path: path/to/object
-            meta_datas: "{\"foo\": 1, \"bar\": 2}"
+            meta_datas: foo=1,bar=2
