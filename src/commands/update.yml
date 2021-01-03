@@ -34,6 +34,7 @@ steps:
         PARAM_BUCKET: << parameters.bucket_name >>
         PARAM_OBJECT_PATH: << parameters.object_path >>
         PARAM_META_DATAS: << parameters.meta_datas >>
+        PARAM_ENDPOINT: << parameters.endpoint >>
       name: Update meta datas
       command: << include(scripts/update.sh) >>
         # command: |

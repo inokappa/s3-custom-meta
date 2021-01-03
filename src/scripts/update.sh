@@ -1,16 +1,14 @@
 Update() {
-  # aws s3api copy-object \
-  #   --bucket "${PARAM_BUCKET}" \
-  #   --copy-source "${PARAM_BUCKET}/${PARAM_OBJECT_PATH}" \
-  #   --key "${PARAM_OBJECT_PATH}" \
-  #   --metadata-directive REPLACE \
-  #   --metadata "${PARAM_META_DATAS}" 
-  aws s3api copy-object \
-    --bucket example.bucket.com \
-    --copy-source example.bucket.com/path/to/object \
-    --key /path/to/object \
+  OPTIONS=""
+  if [ -n "${PARAM_ENDPOINT}" ];then
+    OPTIONS="--endpoint-url ${PARAM_ENDPOINT}"
+  fi
+  aws ${OPTIONS} s3api copy-object \
+    --bucket "${PARAM_BUCKET}" \
+    --copy-source "${PARAM_BUCKET}/${PARAM_OBJECT_PATH}" \
+    --key "${PARAM_OBJECT_PATH}" \
     --metadata-directive REPLACE \
-    --metadata "{\"foo\": 1, \"bar\": 2}"
+    --metadata "${PARAM_META_DATAS}" 
 }
 
 # Will not run if sourced for bats-core tests.

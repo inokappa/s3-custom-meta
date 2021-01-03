@@ -32,7 +32,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: EXAMPLESECRET123456
           AWS_DEFAULT_REGION: us-east-1
           AWS_REGION: us-east-1
-          AWS_ENDPOINT: s3-minio:9000
+          AWS_ENDPOINT: http://s3-minio:9000
           AWS_DISABLE_SSL: true
       - image: minio/minio:latest
         name: s3-minio
@@ -51,7 +51,7 @@ jobs:
             mkdir ${HOME}/bin
             curl -sSL https://dl.minio.io/client/mc/release/linux-amd64/mc -o ${HOME}/bin/mc
             chmod +x ${HOME}/bin/mc
-            ${HOME}/bin/mc config host add s3-minio http://${AWS_ENDPOINT} ${AWS_ACCESS_KEY_ID} ${AWS_SECRET_ACCESS_KEY}
+            ${HOME}/bin/mc config host add s3-minio ${AWS_ENDPOINT} ${AWS_ACCESS_KEY_ID} ${AWS_SECRET_ACCESS_KEY}
             ${HOME}/bin/mc mb s3-minio/example.bucket.com
             touch object && ${HOME}/bin/mc cp object s3-minio/example.bucket.com/path/to/object
       - s3-custom-meta/update:
