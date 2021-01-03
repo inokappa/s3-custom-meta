@@ -1,6 +1,9 @@
 description: >
   Update S3 object custome metadatas.
 parameters:
+  endpoint_url:
+    type: string
+    description: Specify the AWS API Endpoint URL.
   bucket_name:
     type: string
     description: Specify the bucket name.
@@ -12,9 +15,6 @@ parameters:
     description: >
       Specify the meta datas.
       ex) {"foo": "1", "bar": 2} or foo=1,bar=2
-  endpoint_url:
-    type: string
-    description: Specify the AWS API Endpoint URL.
   aws-access-key-id:
     type: env_var_name
     description: aws access key id override.
