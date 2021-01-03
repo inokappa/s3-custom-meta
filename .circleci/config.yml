@@ -59,7 +59,11 @@ jobs:
           bucket_name: example.bucket.com
           object_path: path/to/object
           meta_datas: foo=1,bar=2
-
+      - run:
+          name: Check Object
+          command: |
+            aws --endpoint-url ${AWS_ENDPOINT} s3api --bucket example.bucket.com --key path/to/object
+ 
 workflows:
   # Prior to producing a development orb (which requires credentials) basic validation, linting, and even unit testing can be performed.
   # This workflow will run on every commit
