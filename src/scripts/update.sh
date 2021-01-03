@@ -3,7 +3,7 @@ Update() {
   if [ -n "${PARAM_ENDPOINT}" ];then
     OPTIONS="--endpoint-url ${PARAM_ENDPOINT}"
   fi
-  aws ${OPTIONS} s3api copy-object \
+  aws "${OPTIONS}" s3api copy-object \
     --bucket "${PARAM_BUCKET}" \
     --copy-source "${PARAM_BUCKET}/${PARAM_OBJECT_PATH}" \
     --key "${PARAM_OBJECT_PATH}" \

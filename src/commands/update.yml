@@ -12,6 +12,9 @@ parameters:
     description: >
       Specify the meta datas.
       ex) {"foo": "1", "bar": 2} or foo=1,bar=2
+  endpoint_url:
+    type: string
+    description: Specify the AWS API Endpoint URL.
   aws-access-key-id:
     type: env_var_name
     description: aws access key id override.
@@ -34,7 +37,7 @@ steps:
         PARAM_BUCKET: << parameters.bucket_name >>
         PARAM_OBJECT_PATH: << parameters.object_path >>
         PARAM_META_DATAS: << parameters.meta_datas >>
-        PARAM_ENDPOINT: << parameters.endpoint >>
+        PARAM_ENDPOINT: << parameters.endpoint_url >>
       name: Update meta datas
       command: << include(scripts/update.sh) >>
         # command: |
