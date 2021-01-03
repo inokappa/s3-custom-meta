@@ -31,6 +31,7 @@ jobs:
           AWS_ACCESS_KEY_ID: EXAMPLEKEY123
           AWS_SECRET_ACCESS_KEY: EXAMPLESECRET123456
           AWS_DEFAULT_REGION: us-east-1
+          AWS_REGION: us-east-1
           AWS_ENDPOINT: s3-minio:9000
           AWS_DISABLE_SSL: true
       - image: minio/minio:latest
