@@ -6,7 +6,7 @@ Update() {
   fi
 
   echo "${OPTIONS}"
-  aws "${OPTIONS}" s3api copy-object \
+  aws --debug "${OPTIONS}" s3api copy-object \
     --bucket "${PARAM_BUCKET}" \
     --copy-source "${PARAM_BUCKET}/${PARAM_OBJECT_PATH}" \
     --key "${PARAM_OBJECT_PATH}" \
