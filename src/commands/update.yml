@@ -9,12 +9,10 @@ parameters:
     description: Specify the object path.
   meta_datas:
     type: string
-    description: >
-      Specify the meta datas.
-      ex) foo=1,bar=2
-  aws_endpoint_url:
-    type: string
-    description: AWS_ENDPOINT
+    description: Specify the meta datas. ex) foo=1,bar=2
+      # aws_endpoint_url:
+      #   type: string
+      #   description: AWS_ENDPOINT
   aws-access-key-id:
     type: env_var_name
     description: aws access key id override.
