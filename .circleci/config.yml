@@ -62,8 +62,12 @@ jobs:
       - run:
           name: Check Object
           command: |
-            aws --endpoint-url ${AWS_ENDPOINT} \
-              s3api head-object --bucket example.bucket.com --key path/to/object
+            result=$(aws --endpoint-url ${AWS_ENDPOINT} \
+              s3api head-object --bucket example.bucket.com --key path/to/object \
+            | jq -r '.Metadata|[.foo,.bar]|@sh')
+            if [ "${result}" != "'1' '2'" ];then
+              exit 1
+            fi
 
 workflows:
   # Prior to producing a development orb (which requires credentials) basic validation, linting, and even unit testing can be performed.
