@@ -55,7 +55,7 @@ jobs:
             ${HOME}/bin/mc mb s3-minio/example.bucket.com
             touch object && ${HOME}/bin/mc cp object s3-minio/example.bucket.com/path/to/object
       - s3-custom-meta/update:
-          aws_endpoint_url: http://s3-minio:9000
+        # aws_endpoint_url: http://s3-minio:9000
           bucket_name: example.bucket.com
           object_path: path/to/object
           meta_datas: foo=1,bar=2
